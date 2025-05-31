@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-gradient-start: #FF6B6B;
+  --color-gradient-mid: #4834D4;
+  --color-gradient-end: #30E3CA;
+}
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 100%);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(72, 52, 212, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(48, 227, 202, 0.1) 0%, transparent 30%),
+    linear-gradient(135deg, #0F172A 0%, #1E1B4B 100%);
+  background-attachment: fixed;
+}
+
+.glassmorphic {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.card-glow {
+  position: relative;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(
+    45deg,
+    var(--color-gradient-start),
+    var(--color-gradient-mid),
+    var(--color-gradient-end)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.card-glow:hover::before {
+  opacity: 0.5;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+.grid-bg {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
